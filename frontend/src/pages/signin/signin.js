@@ -9,10 +9,29 @@ function SignIn(){
   
   const navigate = useNavigate();
   
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    navigate("/user")
-  };
+// ON SUBMIT ACTION
+const handleSubmit = async (event) => {
+  event.preventDefault();
+
+// Envoie du formulaire à l'API
+  const response = await fetch('http://localhost:3001/api/v1/user/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+  });
+
+// On stocke la réponse dans la const data
+  const data = await response.json();
+
+  if(data.status === 200 ){
+
+    localStorage.setItem("myToken", data.body.token);
+    window.location.reload(true)
+    
+  } else {
+    console.log("erreur")
+  }
+};
 
  return(
     <main className="main bg-dark">
