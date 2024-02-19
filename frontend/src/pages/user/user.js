@@ -1,12 +1,19 @@
 import "./css/user.css";
+import { useSelector } from "react-redux";
+
 
 function User(){
+
+    const userData = useSelector((state)=>state.userInfo);
+
+    console.log(userData)
+    
 
     return(
             <main className="main bg-dark">
 
                 <div className="header">
-                    <h1>Welcome back<br />Tony Jarvis!</h1>
+                    <h1>Welcome back<br />{userData.firstName}!</h1>
                     <button className="edit-button">Edit Name</button>
                 </div>
 

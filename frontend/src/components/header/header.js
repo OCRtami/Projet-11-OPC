@@ -1,9 +1,12 @@
 import "./css/Header.css";
 import logo from "../../assets/img/argentBankLogo.png"
 import { Link } from 'react-router-dom'
+import { useSelector } from "react-redux";
 
 function Header() {
-    
+
+    const userData = useSelector((state)=>state.userInfo);
+    const Token = localStorage.getItem("myToken")
     return(
 
     <header>
@@ -14,12 +17,12 @@ function Header() {
                 <h1 className="sr-only">Argent Bank</h1>
             </Link>
 
-        <div>
+
             <Link to={"sign-in"} className="main-nav-item">
                 <i className="fa fa-user-circle"></i>
-                Sign In
+                {Token ? userData.firstName : "Sign In" }
             </Link>
-        </div>
+
 
         </nav>
     </header>
