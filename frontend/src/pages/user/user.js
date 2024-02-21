@@ -1,20 +1,25 @@
 import "./css/user.css";
 import { useSelector } from "react-redux";
-
+import EditMode from '../../components/editMode/editMode';
+import { useState } from "react";
 
 function User(){
 
     const userData = useSelector((state)=>state.userInfo);
+    const [openModal, setOpenModal] = useState(false);    
 
-    console.log(userData)
-    
+    const toggleModal=()=>{
+        setOpenModal(!openModal)
+    }
+
+
 
     return(
             <main className="main bg-dark">
 
                 <div className="header">
-                    <h1>Welcome back<br />{userData.firstName}!</h1>
-                    <button className="edit-button">Edit Name</button>
+                    <h1>Welcome back<br /> {userData.firstName} !</h1>
+                    <button className="edit-button" onClick={toggleModal}>Edit Name</button>
                 </div>
 
                 <h2 className="sr-only">Accounts</h2>
@@ -50,6 +55,9 @@ function User(){
                     <button className="transaction-button">View transactions</button>
                     </div>
                 </section>
+
+                {openModal ? <EditMode setOpenModal={toggleModal}/> : null}
+
             </main>   
     )
 }

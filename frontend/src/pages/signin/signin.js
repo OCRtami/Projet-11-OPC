@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import "./css/signin.css"
 import {useState} from "react"
 
@@ -7,13 +6,16 @@ function SignIn(){
   const [email, setUsername] = useState('');
   const [password, setPassword] = useState('');
   
-  const navigate = useNavigate();
+
   
 // ON SUBMIT ACTION
 const handleSubmit = async (event) => {
   event.preventDefault();
 
 // Envoie du formulaire à l'API
+
+try{
+
   const response = await fetch('http://localhost:3001/api/v1/user/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -23,13 +25,11 @@ const handleSubmit = async (event) => {
 // On stocke la réponse dans la const data
   const data = await response.json();
 
-  if(data.status === 200 ){
-
     localStorage.setItem("myToken", data.body.token);
     window.location.reload(true)
     
-  } else {
-    console.log("erreur")
+  } catch (error) {
+    console.error(error) 
   }
 };
 

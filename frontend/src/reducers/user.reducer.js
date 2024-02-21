@@ -1,4 +1,4 @@
-import { GET_USERINFO } from "../actions/user.action";
+import { EDIT_USERNAME, GET_USERINFO } from "../actions/user.action";
 
 const initialState = {};
 
@@ -9,6 +9,9 @@ export default function userReducer(state=initialState, action){
         case GET_USERINFO:
             return action.payload;
 
+        case EDIT_USERNAME:
+            return action.payload;
+            
         default:
             return state;
     }
