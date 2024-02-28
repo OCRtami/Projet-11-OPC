@@ -26,7 +26,7 @@ try{
   const data = await response.json();
 
     localStorage.setItem("myToken", data.body.token);
-    window.location.reload(true)
+    window.location = "/";
     
   } catch (error) {
     console.error(error) 

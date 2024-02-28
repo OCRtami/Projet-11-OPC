@@ -101,6 +101,78 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+          
+  /user/transaction:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: Transaction API
+      description: API for fetching all the transaction of a user
+      #produces:
+       # - application/json
+      responses:
+        '200':
+          description: Transaction retrieved successully
+          schema:
+            $ref: '#/definitions/Transaction'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+          
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: Transaction API
+      description: API for updating a user profile
+      parameters:
+        - in: body
+          name: body
+          description: Update transactions attributes 
+          required: true
+          schema:
+            $ref: '#/definitions/EditTransaction'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User profile retrieved successully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+          
+    delete:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: Transaction API
+      description: API for deleting user transaction information
+      parameters:
+        - in: body
+          name: body
+          description: Delete transactions attributes 
+          required: true
+          schema:
+            $ref: '#/definitions/EditTransaction'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User profile retrieved successully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -156,3 +228,34 @@ definitions:
     properties:
       userName:
         type: string
+  Transaction:
+    properties:
+      date:
+        type: string
+        description: user email
+      description:
+        type: string
+        description: user password
+      amount:
+        type: string
+        description: user first name
+      balance:
+        type: string
+        description: user last name
+      type:
+        type: string
+        description: user public name
+      category:
+        type: string
+        description: user public name
+      note:
+        type: string
+        description: user public name
+  EditTransaction:
+    type: object
+    properties:
+      category:
+        type: string
+      note:
+        type: string
+      

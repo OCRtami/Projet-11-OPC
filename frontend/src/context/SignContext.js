@@ -22,7 +22,7 @@ export function UserProvider({children}){
 
     const signOut = () => {
         localStorage.removeItem("myToken")
-        window.location.reload(true)
+        window.location = "/";
     }
 
     return(

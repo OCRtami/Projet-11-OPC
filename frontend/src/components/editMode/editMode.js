@@ -23,28 +23,30 @@ function EditMode({setOpenModal}){
 
                 {/* USERNAME */}
                 <div className="edit_input">
-                    <label htmlFor="username-Edit" >User name: </label>
-                    <input type="text" value={username} onChange={e => setUsername(e.target.value)}/>
+                    <label className="edit_label" htmlFor="username-Edit" >User name: </label>
+                    <input id="username-Edit" type="text" value={username} onChange={e => setUsername(e.target.value)}/>
 
                 </div>
                 <br/>
 
                 {/* FIRSTNAME */}
                 <div className="edit_input">
-                    <label htmlFor="username-Edit">First name: </label>
-                    <input type="text" value={userData.firstName} disabled/>
+                    <label className="edit_label" htmlFor="username-Edit">First name: </label>
+                    <input id="firstName-Edit" type="text" value={userData.firstName} disabled/>
                 </div>
                 <br/>
 
                 {/* LASTNAME */}
                 <div className="edit_input">
-                    <label htmlFor="username-Edit">Last name: </label>
-                    <input type="text" value={userData.lastName} disabled/>
+                    <label className="edit_label" htmlFor="username-Edit">Last name: </label>
+                    <input id="lastName-Edit" type="text" value={userData.lastName} disabled/>
                 </div>
 
                 {/* SUBMIT BTN */}
-                <button type="submit" onClick={handleEdit}>Submit</button>
-                <button onClick={(e)=>{e.preventDefault(); setOpenModal()}}>Cancel</button>
+                <div className="edit_button_wrap">
+                <button className="edit_button" type="submit" onClick={handleEdit}>Submit</button>
+                <button className="edit_button" onClick={(e)=>{e.preventDefault(); setOpenModal()}}>Cancel</button>
+                </div>
 
             </form>
             

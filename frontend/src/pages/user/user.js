@@ -22,6 +22,8 @@ function User(){
                     <button className="edit-button" onClick={toggleModal}>Edit Name</button>
                 </div>
 
+                {openModal ? <EditMode setOpenModal={toggleModal}/> : null}
+
                 <h2 className="sr-only">Accounts</h2>
                 <section className="account">
                     <div className="account-content-wrapper">
@@ -56,7 +58,7 @@ function User(){
                     </div>
                 </section>
 
-                {openModal ? <EditMode setOpenModal={toggleModal}/> : null}
+
 
             </main>   
     )
