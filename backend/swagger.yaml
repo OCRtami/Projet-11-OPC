@@ -102,7 +102,7 @@ paths:
         '500':
           description: Internal Server Error
           
-  /user/transaction:
+  /user/transaction/:transactionId:
     post:
       security:
         - Bearer: []
@@ -119,6 +119,8 @@ paths:
             $ref: '#/definitions/Transaction'
         '400':
           description: Invalid Fields
+        '404':
+          description: Transaction not found
         '500':
           description: Internal Server Error
           
@@ -128,7 +130,7 @@ paths:
       tags:
         - User Module
       summary: Transaction API
-      description: API for updating a user profile
+      description: API for editing transaction information
       parameters:
         - in: body
           name: body
@@ -140,39 +142,16 @@ paths:
         - application/json
       responses:
         '200':
-          description: User profile retrieved successully
+          description: Information edited successfully 
           schema:
-            $ref: '#/definitions/ApiResponse'
+            $ref: '#/definitions/EditResponse'
         '400':
           description: Invalid Fields
+        '404':
+          description: Transaction not found
         '500':
           description: Internal Server Error
-          
-    delete:
-      security:
-        - Bearer: []
-      tags:
-        - User Module
-      summary: Transaction API
-      description: API for deleting user transaction information
-      parameters:
-        - in: body
-          name: body
-          description: Delete transactions attributes 
-          required: true
-          schema:
-            $ref: '#/definitions/EditTransaction'
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: User profile retrieved successully
-          schema:
-            $ref: '#/definitions/ApiResponse'
-        '400':
-          description: Invalid Fields
-        '500':
-          description: Internal Server Error
+  
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -258,4 +237,18 @@ definitions:
         type: string
       note:
         type: string
+  EditResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      body:
+        type: object
+        properties:
+          category:
+            type: string
+          note:
+            type: string
       

@@ -26,6 +26,7 @@ function App() {
           <Route path="/index"             element={<HomePage/>} />
           <Route path="/sign-in"           element={!logged ? <SignIn/> : <Navigate to="/user"/>} />
           <Route path="/user"              element={!logged ? <Navigate to="/sign-in"/> : <User/>} />
+          <Route path="*"                  element={<HomePage/>}/>
         </Routes>
     <Footer/>
     </>

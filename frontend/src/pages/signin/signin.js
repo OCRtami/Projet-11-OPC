@@ -5,7 +5,7 @@ function SignIn(){
 
   const [email, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  
+  const [error, setError] = useState(false)
 
   
 // ON SUBMIT ACTION
@@ -26,10 +26,12 @@ try{
   const data = await response.json();
 
     localStorage.setItem("myToken", data.body.token);
-    window.location = "/";
+    window.location = "/user";
     
   } catch (error) {
-    console.error(error) 
+    console.error(error)
+    setError(true)
+
   }
 };
 
@@ -53,6 +55,8 @@ try{
             <label htmlFor="password">Password</label>
             <input type="password" value={password} onChange={e => setPassword(e.target.value)} required/>
           </div>
+          
+
 
           {/* Remember box */}
           <div className="input-remember">
@@ -62,6 +66,10 @@ try{
 
           {/* Submit button */}
           <button  type="submit" className="sign-in-button">Sign In</button>
+
+          {error && <div className="text-red">
+            Merci de verifier vos identifiants.
+          </div>}
 
         </form>
 

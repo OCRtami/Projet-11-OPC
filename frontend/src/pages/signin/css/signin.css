@@ -54,3 +54,8 @@ button {
   padding: 5px;
   font-size: 1.2rem;
 }
+
+.text-red {
+  color: red;
+  margin-top: 20px;
+}
