@@ -8,7 +8,6 @@ import Header from './components/header/header';
 import Footer from './components/footer/footer';
 //CONTEXT
 import UserContext from './context/SignContext';
-
 import { useContext } from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom';
 
@@ -24,8 +23,8 @@ function App() {
         <Routes>
           <Route path="/"                  element={<HomePage/>} />
           <Route path="/index"             element={<HomePage/>} />
-          <Route path="/sign-in"           element={!logged ? <SignIn/> : <Navigate to="/user"/>} />
-          <Route path="/user"              element={!logged ? <Navigate to="/sign-in"/> : <User/>} />
+          <Route path="/sign-in"           element={!logged ? <SignIn/> : <Navigate to="/profile"/>} />
+          <Route path="/profile"           element={!logged ? <Navigate to="/sign-in"/> : <User/>} />
           <Route path="*"                  element={<HomePage/>}/>
         </Routes>
     <Footer/>

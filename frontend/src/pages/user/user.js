@@ -12,8 +12,6 @@ function User(){
         setOpenModal(!openModal)
     }
 
-
-
     return(
             <main className="main bg-dark">
 

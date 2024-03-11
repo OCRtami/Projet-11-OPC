@@ -13,9 +13,7 @@ const handleSubmit = async (event) => {
   event.preventDefault();
 
 // Envoie du formulaire à l'API
-
 try{
-
   const response = await fetch('http://localhost:3001/api/v1/user/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -55,8 +53,6 @@ try{
             <label htmlFor="password">Password</label>
             <input type="password" value={password} onChange={e => setPassword(e.target.value)} required/>
           </div>
-          
-
 
           {/* Remember box */}
           <div className="input-remember">
